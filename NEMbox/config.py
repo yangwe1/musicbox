@@ -58,6 +58,12 @@ class Config(Singleton):
                 "describe": "Global keybind for previous song."
                             "Uses gtk notation for keybinds."
             },
+            "global_star": {
+                "value": "<ctrl><alt>s",
+                "default": "<ctrl><alt>s",
+                "describe": "Global keybind for star song."
+                            "Uses gtk notation for keybinds."
+            },
             "notifier": {
                 "value": True,
                 "default": True,

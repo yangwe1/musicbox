@@ -172,6 +172,15 @@ class Menu:
         self.player.prev()
         time.sleep(0.1)
 
+    # 全局收藏歌曲
+    def star_song(self):
+        if (self.datatype == 'songs' or self.datatype == 'djchannels') and len(self.datalist) != 0:
+            self.collection.append(self.datalist[self.index])
+            if platform.system() == 'Darwin':
+                os.system('/usr/bin/osascript -e \'display notification "Added successfully"\'')
+            else:
+                os.system('/usr/bin/notify-send "Added successfully"')
+
     def start(self):
         self.START = time.time() // 1
         self.ui.build_menu(self.datatype, self.title, self.datalist, self.offset, self.index, self.step, self.START)
@@ -182,6 +191,7 @@ class Menu:
             keybinder.bind(self.config.get_item("global_play_pause"), self.play_pause)
             keybinder.bind(self.config.get_item("global_next"), self.next_song)
             keybinder.bind(self.config.get_item("global_previous"), self.previous_song)
+            keybinder.bind(self.config.get_item("global_star"), self.star_song)
         while True:
             datatype = self.datatype
             title = self.title
