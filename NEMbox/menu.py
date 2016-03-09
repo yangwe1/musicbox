@@ -128,9 +128,9 @@ class Menu:
         curses.endwin()
         sys.exit()
 
-    def alert(self, version):
+    def update_alert(self, version):
         latest = Menu().check_version()
-        if latest != version:
+        if latest != version and latest != 0:
             if platform.system() == 'Darwin':
                 os.system('/usr/bin/osascript -e \'display notification "MusicBox Update is available"sound name "/System/Library/Sounds/Ping.aiff"\'')
                 time.sleep(0.5)
@@ -138,16 +138,38 @@ class Menu:
             else:
                 os.system('/usr/bin/notify-send "MusicBox Update is available"')
 
+    def signin_alert(self, type):
+        if type == 0:
+            if platform.system() == 'Darwin':
+                os.system('/usr/bin/osascript -e \'display notification "Mobile signin success"sound name "/System/Library/Sounds/Ping.aiff"\'')
+            else:
+                os.system('/usr/bin/notify-send "Mobile signin success"')
+        else:
+            if platform.system() == 'Darwin':
+                os.system('/usr/bin/osascript -e \'display notification "PC signin success"sound name "/System/Library/Sounds/Ping.aiff"\'')
+            else:
+                os.system('/usr/bin/notify-send "PC signin success"')
+
     def check_version(self):
-        # 检查更新
-        tree = ET.ElementTree(ET.fromstring(str(self.netease.get_version())))
-        root = tree.getroot()
-        return root[0][4][0][0].text
+        # 检查更新 && 签到
+        try:
+            mobilesignin = self.netease.daily_signin(0)
+            if  mobilesignin != -1 and mobilesignin['code'] != -2:
+                self.signin_alert(0)
+            time.sleep(0.5)
+            pcsignin = self.netease.daily_signin(1)
+            if pcsignin != -1 and pcsignin['code'] != -2:
+                self.signin_alert(1)
+            tree = ET.ElementTree(ET.fromstring(str(self.netease.get_version())))
+            root = tree.getroot()
+            return root[0][4][0][0].text
+        except:
+            return 0
 
     def start_fork(self, version):
         pid = os.fork()
         if pid == 0:
-            Menu().alert(version)
+            Menu().update_alert(version)
         else:
             Menu().start()
 
@@ -519,6 +541,9 @@ class Menu:
         offset = self.offset
         index = self.index
         self.stack.append([datatype, title, datalist, offset, index])
+
+        if idx > len(self.datalist):
+            return False
 
         if datatype == 'main':
             self.choice_channel(idx)

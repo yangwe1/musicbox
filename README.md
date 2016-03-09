@@ -2,7 +2,7 @@ NetEase-MusicBox
 =================
 
 
-#### Thanks vellow, hbprotoss, Catofes, 尘埃, chaserhkj, Ma233, 20015jjw, mchome, stkevintan, ayanamimcy
+#### [感谢](https://github.com/darknessomi/musicbox/graphs/contributors)为 MusicBox 的开发付出过努力的每一个人！
 
 高品质网易云音乐命令行版本，简洁优雅，丝般顺滑，基于Python编写。
 
@@ -101,7 +101,7 @@ NetEase-MusicBox
 <table>
 	<tr> <td>OS X</td> <td>10.11 / 10.10 / 10.9</td> </tr>
 	<tr> <td>Ubuntu</td> <td>14.04</td> </tr>
-	<tr> <td>Kali</td> <td>1.1.0 / 2.0</td> </tr>
+	<tr> <td>Kali</td> <td>1.1.0 / 2.0 / Rolling</td> </tr>
 	<tr> <td>CentOS</td> <td>7</td> </tr>
 	<tr> <td>openSUSE</td> <td>13.2</td> </tr>
 	<tr> <td>Fedora</td> <td>22</td> </tr>
@@ -137,6 +137,14 @@ Enjoy it !
 
 ### 更新日志
 
+2016-03-02 版本 0.2.1.4    新增自动签到功能
+
+2016-02-29 版本 0.2.1.3    修复离线错误
+
+2016-02-25 版本 0.2.1.2    增加歌词翻译开关
+
+2016-02-19 版本 0.2.1.1    已知错误修复
+
 2016-02-10 版本 0.2.1.0    新增外文歌曲歌词翻译显示
 
 2015-12-31 版本 0.2.0.8    修复每日推荐因 API 更换导致的错误
@@ -145,7 +153,7 @@ Enjoy it !
 
 2015-12-02 版本 0.2.0.6    新增手动缓存功能
 
-2015-11-28 版本 0.2.0.5    错误修复
+2015-11-28 版本 0.2.0.5    已知错误修复
 
 2015-11-10 版本 0.2.0.4    优化切换歌曲时歌单显示, 新增显示歌曲信息功能
 
