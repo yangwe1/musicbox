@@ -193,12 +193,11 @@ class Menu:
 
     # 全局收藏歌曲
     def star_song(self):
-        if (self.datatype == 'songs' or self.datatype == 'djchannels') and len(self.datalist) != 0:
-            self.collection.append(self.datalist[self.index])
-            if platform.system() == 'Darwin':
-                os.system('/usr/bin/osascript -e \'display notification "Added successfully"\'')
-            else:
-                os.system('/usr/bin/notify-send "Added successfully"')
+        return_data = self.request_api(self.netease.fm_like, self.player.get_playing_id())
+        if return_data != -1:
+            self.notify("Added successfully!", 0)
+        else:
+            self.notify("Existing song!", 0)
 
     def start(self):
         self.START = time.time() // 1
