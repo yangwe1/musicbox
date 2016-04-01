@@ -38,9 +38,8 @@ if  pyqt_activity:
             self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
             if config.get_item("osdlyrics_on_top"):
                 self.setWindowFlags(QtCore.Qt.WindowStaysOnTopHint)
-            else:
-                if config.get_item("osdlyrics_window_border"):
-                    self.setWindowFlags(QtCore.Qt.X11BypassWindowManagerHint)
+            if config.get_item("osdlyrics_window_border"):
+                self.setWindowFlags(QtCore.Qt.X11BypassWindowManagerHint)
             self.setMinimumSize(600,50)
             self.resize(600, 60)
             scn = QtGui.QApplication.desktop().screenNumber(QtGui.QApplication.desktop().cursor().pos())
