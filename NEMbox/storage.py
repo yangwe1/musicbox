@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 # @Author: Catofes
 # @Date:   2015-08-15
-
-
 '''
 Class to stores everything into a json file.
 '''
@@ -18,7 +16,8 @@ class Storage(Singleton):
         Database stores every info.
 
         version int
-        #if value in file is unequal to value defined in this class. An database update will be applied.
+        #if value in file is unequal to value defined in this class.
+        #An database update will be applied.
         user dict:
             username str
             key str
@@ -102,7 +101,10 @@ class Storage(Singleton):
                 self.database.pop("cache")
             elif self.database["version"] == 3:
                 self.database["version"] = 4
-                self.database["user"] = {'username': '', 'password': '', 'user_id': '', 'nickname': ''}
+                self.database["user"] = {'username': '',
+                                         'password': '',
+                                         'user_id': '',
+                                         'nickname': ''}
             self.check_version()
             return False
 
